@@ -1,0 +1,42 @@
+﻿@model TheCalculatorApp.Models.InputDataModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<form asp-action="Index">
+    <div>
+        <label asp-for="FirstNumber" class="label-control"></label>
+        <input asp-for="FirstNumber" class="form-control" />
+        <span asp-validation-for="FirstNumber" class="alert-danger"></span>
+    </div>
+    <br />
+    <div>
+        <label asp-for="SecondNumber" class="label-control"></label>
+        <input asp-for="SecondNumber" class="form-control" />
+        <span asp-validation-for="SecondNumber" class="alert-danger"></span>
+    </div>
+    <br />
+    <div>
+                @Html.DropDownList("probDropdownList", new List<SelectListItem>{
+                new SelectListItem { Text = "CombinedWith: P(A)P(B)", Value = "1" },
+                new SelectListItem { Text = "Either: P(A) + P(B) – P(A)P(B)", Value = "2" },
+                },  "Select function")
+            </div>
+
+    <br />
+    <div>
+        <button type="submit">Calculate</button>
+    </div>
+    <br />
+    <div>
+        <p>Result:</p> @ViewBag.Result
+    </div>
+
+</form>
